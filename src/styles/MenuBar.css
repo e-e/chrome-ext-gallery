@@ -1,0 +1,22 @@
+.menu-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: navy;
+  background-color: ivory;
+  cursor: pointer;
+  padding: 20px 0px;
+}
+.menu-bar-item.active {
+  color: white;
+  background-color: navy;
+}
