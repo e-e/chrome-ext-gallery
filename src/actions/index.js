@@ -4,6 +4,7 @@ export const ADD_IMAGE = 'ADD_IMAGE';
 export const SET_IMAGES_FROM_LOCAL_STORAGE = 'SET_IMAGES_FROM_LOCAL_STORAGE';
 export const SET_VIEW = 'SET_VIEW';
 export const CLEAR_ALL_IMAGES = 'CLEAR_ALL_IMAGES';
+export const SET_ACTIVE_IMAGE = 'SET_ACTIVE_IMAGE';
 
 function guid() {
   function s4() {
@@ -26,6 +27,15 @@ function guid() {
     s4()
   );
 }
+
+function imageSrcExists(image, images) {
+  for (let i = 0; i < images.length; i++) {
+    if (image.src.trim().toLowerCase() === images[i].src.trim().toLowerCase()) {
+      return true;
+    }
+  }
+  return false;
+}
 function GET_IMAGES() {
   return new Promise((resolve, reject) => {
     chrome.storage.local.get('images', obj => {
@@ -38,6 +48,21 @@ function GET_IMAGES() {
         });
       }
     });
+  });
+}
+
+function REMOVE_IMAGE(image) {
+  return new Promise((resolve, reject) => {
+    GET_IMAGES()
+      .then(images => {
+        images = images.filter(img => {
+          return image.id !== img.id;
+        });
+        return SET_IMAGES(images);
+      })
+      .then(images => {
+        resolve(images);
+      });
   });
 }
 
@@ -77,7 +102,11 @@ export function addImage(srcUrl) {
   return dispatch => {
     GET_IMAGES()
       .then(images => {
-        return SET_IMAGES([...images, image]);
+        // don't add images with same src url
+        if (!imageSrcExists(image, images)) {
+          images = [...images, image];
+        }
+        return SET_IMAGES(images);
       })
       .then(images => {
         dispatch({
@@ -95,5 +124,23 @@ export function clearAllImages() {
         type: CLEAR_ALL_IMAGES
       });
     });
+  };
+}
+
+export function removeImage(image) {
+  return dispatch => {
+    REMOVE_IMAGE(image).then(images => {
+      dispatch({
+        type: SET_IMAGES_FROM_LOCAL_STORAGE,
+        payload: images
+      });
+    });
+  };
+}
+
+export function setActiveImage(image) {
+  return {
+    type: SET_ACTIVE_IMAGE,
+    payload: image
   };
 }

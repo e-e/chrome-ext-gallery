@@ -13,9 +13,18 @@ body {
 .add-form {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
+}
+.form-row {
+  flex: 1;
+  text-align: center;
+}
+.form-row img {
+  max-width: 50%;
 }
 
 .gallery-content {
   padding: 15px;
+  background-color: ivory;
 }

@@ -1,4 +1,8 @@
-import { SET_IMAGES_FROM_LOCAL_STORAGE, SET_VIEW } from '../actions';
+import {
+  SET_IMAGES_FROM_LOCAL_STORAGE,
+  SET_VIEW,
+  SET_ACTIVE_IMAGE
+} from '../actions';
 
 const DEFUALT_STATE = {
   imagesLoadedFromStorage: false,
@@ -19,6 +23,8 @@ export default (state = DEFUALT_STATE, action) => {
       );
     case SET_VIEW:
       return { ...state, view: action.payload };
+    case SET_ACTIVE_IMAGE:
+      return { ...state, view: 'edit-image' };
     default:
       return state;
   }

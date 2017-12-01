@@ -8,18 +8,21 @@
 .gallery-item {
   display: inline-block;
   margin-bottom: 8px;
-  width: calc(25% - 6px);
+  width: calc(25% - 8px);
   margin-right: 8px;
   text-decoration: none;
   color: black;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: white;
 }
 /*
 .gallery-item a:nth-of-type(2n) {
   margin-right: none;
 }*/
 
-.gallery-item {
-  width: calc(25% - 6px);
+.gallery-item:hover {
+  cursor: pointer;
+  border: 1px solid rgba(100, 100, 100, 0.3);
 }
 .gallery-item:nth-of-type(2n) {
   margin-right: 8px;

@@ -18,16 +18,22 @@ class AddImageForm extends Component {
       <div className="add-form">
         {function() {
           if (this.state.src.trim().length) {
-            return <img src={this.state.src.trim()} />;
+            return (
+              <div className="form-row">
+                <img src={this.state.src.trim()} />
+              </div>
+            );
           }
         }.bind(this)()}
-        <input onChange={this.onchange} />
-        <button
-          type="button"
-          onClick={() => this.props.addImage(this.state.src)}
-        >
-          &plus;
-        </button>
+        <div className="form-row">
+          <input onChange={this.onchange} />
+          <button
+            type="button"
+            onClick={() => this.props.addImage(this.state.src)}
+          >
+            +
+          </button>
+        </div>
       </div>
     );
   }

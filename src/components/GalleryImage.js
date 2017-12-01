@@ -1,10 +1,14 @@
 import React from 'react';
-const GalleryImage = props => {
+const GalleryImage = ({ image, remove, setActive }) => {
   return (
-    <div className="gallery-item">
+    <div className="gallery-item" onClick={() => setActive(image)}>
       <figure>
-        <img src={props.src} />
-        <figcaption>{props.id}!</figcaption>
+        <img src={image.src} />
+        <figcaption>
+          <ul>
+            <li onClick={() => remove(image)}>x</li>
+          </ul>
+        </figcaption>
       </figure>
     </div>
   );

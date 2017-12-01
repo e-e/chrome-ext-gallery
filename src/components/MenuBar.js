@@ -12,7 +12,7 @@ function classNames(obj = {}) {
 
 class MenuBar extends Component {
   renderMenuItems() {
-    return this.props.views.map(item => {
+    return this.props.views.filter(item => item.menu).map(item => {
       const _classNames = classNames({
         'menu-bar-item': true,
         active: this.props.view === item.view

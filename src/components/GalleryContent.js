@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import GalleryImages from './GalleryImages';
-import GalleryTags from './GalleryTags';
-import AddImageForm from './AddImageForm';
-
 class GalleryContent extends Component {
   renderView() {
     for (let i = 0; i < this.props.views.length; i++) {
       if (this.props.views[i].view === this.props.view) {
         let Html = this.props.views[i].component;
+        console.log('HTML: ', Html, this.props.views[i]);
         return <Html />;
       }
     }
