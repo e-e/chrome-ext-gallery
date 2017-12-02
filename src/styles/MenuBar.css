@@ -6,7 +6,7 @@
   align-items: center;
 }
 .menu-bar-item {
-  border: 1px solid ivory;
+  border: 1px solid #25354f;
   border-top: none;
   border-bottom: none;
   flex: 1;
@@ -21,6 +21,6 @@
 }
 .menu-bar-item.active {
   border: none;
-  color: navy;
-  background-color: ivory;
+  color: white;
+  background-color: #25354f;
 }

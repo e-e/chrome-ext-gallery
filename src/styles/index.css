@@ -4,9 +4,10 @@ body {
   padding: 0;
   box-sizing: border-box;
   width: 500px;
+  min-height: 500px;
 }
 #app {
-  display: flex;
+  display: block;
   width: 100%;
 }
 
@@ -26,5 +27,5 @@ body {
 
 .gallery-content {
   padding: 15px;
-  background-color: ivory;
+  background-color: #25354f;
 }

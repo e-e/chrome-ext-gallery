@@ -1,0 +1,101 @@
+.gallery-images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gallery-item {
+}
+.gallery-item {
+  display: inline-block;
+  margin-bottom: 8px;
+  width: calc(25% - 8px);
+  margin-right: 8px;
+  text-decoration: none;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: white;
+}
+/*
+.gallery-item a:nth-of-type(2n) {
+  margin-right: none;
+}*/
+
+.gallery-item:hover {
+  cursor: pointer;
+  border: 1px solid rgba(100, 100, 100, 0.3);
+}
+.gallery-item:nth-of-type(2n) {
+  margin-right: 8px;
+}
+.gallery-item:nth-of-type(4n) {
+  margin-right: 0px;
+}
+
+.gallery-item figure {
+  margin: 0;
+  overflow: hidden;
+}
+
+.gallery-item figcaption {
+  margin-top: 15px;
+}
+
+.gallery-item img {
+  border: none;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  background-color: #ccc;
+}
+
+.image-buttons {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.image-buttons .btn {
+  line-height: 1em;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.image-buttons .btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.frame-square {
+  background: #fff;
+  /*border: 2px solid #777;*/
+  display: inline-block;
+  vertical-align: top;
+  /*padding: 10px;*/
+  width: calc(480px/3 - 0.5em);
+  height: calc(480px/3 - 0.5em);
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  position: relative;
+}
+
+.crop {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.crop img {
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+  margin: auto;
+  position: absolute;
+  top: -100%;
+  right: -100%;
+  bottom: -100%;
+  left: -100%;
+}
