@@ -1,0 +1,14 @@
+{
+  "short_name": "GALLERY",
+  "name": "GALLERY",
+  "manifest_version": 2,
+  "version": "0.1",
+  "permissions": ["storage", "contextMenus"],
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "React Ext"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
