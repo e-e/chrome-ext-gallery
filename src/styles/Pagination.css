@@ -1,0 +1,26 @@
+.pagination {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.pagination-section {
+  flex: 1;
+}
+
+.prev-next {
+  padding: 5px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: #25354f;
+  box-sizing: border-box;
+  border: 1px solid white;
+}
+
+.prev-next:hover {
+  cursor: pointer;
+  background-color: #25354f;
+  color: white;
+}

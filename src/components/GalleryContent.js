@@ -12,6 +12,7 @@ class GalleryContent extends Component {
     }
     return <div>Cant find that view!</div>;
   }
+
   render() {
     return <div className="gallery-content">{this.renderView()}</div>;
   }

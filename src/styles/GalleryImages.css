@@ -12,11 +12,11 @@
   border: 1px solid rgba(0, 0, 0, 0);
   width: calc(calc(470px / 3));
   height: calc(calc(470px / 3));
-  background-color: white;
+  /*background-color: white;*/
   overflow: hidden;
 }
 .gallery-image:hover {
-  border: 1px solid black;
+  border: 1px solid white;
   cursor: pointer;
 }
 .gallery-image img {

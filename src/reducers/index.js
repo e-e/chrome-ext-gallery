@@ -7,6 +7,7 @@ import GalleryImages from '../components/GalleryImages';
 import GalleryTags from '../components/GalleryTags';
 import AddImageForm from '../components/AddImageForm';
 import EditImage from '../components/EditImage';
+import Settings from '../components/Settings';
 
 const rootReducer = combineReducers({
   activeImage: ActiveImageReducer,
@@ -19,6 +20,12 @@ const rootReducer = combineReducers({
       view: 'add-url',
       label: 'Add From URL',
       component: AddImageForm,
+      menu: true
+    },
+    {
+      view: 'settings',
+      label: 'Settings',
+      component: Settings,
       menu: true
     },
     {

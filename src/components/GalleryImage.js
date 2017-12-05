@@ -1,45 +1,32 @@
-import React from 'react';
-// const GalleryImage = ({ image, remove, setActive }) => {
-//   return (
-//     <div className="gallery-item" onClick={() => setActive(image)}>
-//       <figure>
-//         <img src={image.src} />
-//         <figcaption>
-//           <div className="image-buttons">
-//             <div className="btn" onClick={() => remove(image)}>
-//               x
-//             </div>
-//           </div>
-//         </figcaption>
-//       </figure>
-//     </div>
-//   );
-// };
+import React, { Component } from 'react';
+import ImageLoading from './ImageLoading';
 
-// const GalleryImage = ({ image, remove, setActive }) => {
-//   return (
-//     <div className="frame-square" onClick={() => setActive(image)}>
-//       <div className="crop">
-//         <img src={image.src} />
-//       </div>
-//     </div>
-//   );
-// };
-
-const GalleryImage = ({ image, remove, setActive }) => {
-  return (
-    <div className="gallery-image" onClick={() => setActive(image)}>
-      <img src={image.src} />
-    </div>
-  );
-};
+class GalleryImage extends Component {
+  constructor(props) {
+    super(props);
+    this.imageLoaded = this.imageLoaded.bind(this);
+    this.state = { loading: true };
+  }
+  imageLoaded(event) {
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 2500);
+  }
+  renderLoading() {
+    if (this.state.loading) {
+      return <ImageLoading />;
+    }
+    return null;
+  }
+  render() {
+    const { image, remove, setActive } = this.props;
+    return (
+      <div className="gallery-image" onClick={() => setActive(image)}>
+        {this.renderLoading()}
+        <img src={image.src} onLoad={this.imageLoaded} key={image.src} />
+      </div>
+    );
+  }
+}
 
 export default GalleryImage;
-
-// <figcaption>
-//   <div className="image-buttons">
-//     <div className="btn" onClick={() => remove(image)}>
-//       x
-//     </div>
-//   </div>
-// </figcaption>
