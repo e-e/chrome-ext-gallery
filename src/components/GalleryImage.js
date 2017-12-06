@@ -7,10 +7,11 @@ class GalleryImage extends Component {
     this.imageLoaded = this.imageLoaded.bind(this);
     this.state = { loading: true };
   }
+  componentWillReceiveProps() {
+    this.setState({ loading: true });
+  }
   imageLoaded(event) {
-    setTimeout(() => {
-      this.setState({ loading: false });
-    }, 2500);
+    this.setState({ loading: false });
   }
   renderLoading() {
     if (this.state.loading) {

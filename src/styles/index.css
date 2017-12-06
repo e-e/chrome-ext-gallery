@@ -34,3 +34,11 @@ body {
   background-color: #25354f;
   flex: 1;
 }
+
+.top-button-bar {
+  margin-bottom: 15px;
+}
+
+.content-section:not(:last-child) {
+  margin-bottom: 15px;
+}

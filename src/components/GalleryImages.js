@@ -9,6 +9,7 @@ import {
 
 import GalleryImage from './GalleryImage';
 import Pagination from './Pagination';
+import ContentSection from './ContentSection';
 
 import '../styles/GalleryImages.css';
 
@@ -40,14 +41,18 @@ class GalleryImages extends Component {
   render() {
     return (
       <div className="gallery-images-wrap">
-        <div className="gallery-images">{this.renderImages()}</div>
-        <Pagination
-          total={this.props.total}
-          page={this.props.page}
-          perPage={this.props.perPage}
-          onPrev={this.props.prevGalleryPage}
-          onNext={this.props.nextGalleryPage}
-        />
+        <ContentSection>
+          <div className="gallery-images">{this.renderImages()}</div>
+        </ContentSection>
+        <ContentSection>
+          <Pagination
+            total={this.props.total}
+            page={this.props.page}
+            perPage={this.props.perPage}
+            onPrev={this.props.prevGalleryPage}
+            onNext={this.props.nextGalleryPage}
+          />
+        </ContentSection>
       </div>
     );
   }
