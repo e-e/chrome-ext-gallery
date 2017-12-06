@@ -8,7 +8,8 @@ export const CLEAR_ALL_IMAGES = 'CLEAR_ALL_IMAGES';
 export const SET_ACTIVE_IMAGE = 'SET_ACTIVE_IMAGE';
 export const NEXT_GALLERY_PAGE = 'NEXT_GALLERY_PAGE';
 export const PREV_GALLERY_PAGE = 'PREV_GALLERY_PAGE';
-export const ADD_IMAGE_TAG = 'ADD_IMAGE_TAG';
+export const ADDED_IMAGE_TAG = 'ADDED_IMAGE_TAG';
+export const REMOVED_IMAGE_TAG = 'REMOVED_IMAGE_TAG';
 
 export function loadImagesFromLocalStorage() {
   return dispatch => {
@@ -93,4 +94,24 @@ export function prevGalleryPage() {
   };
 }
 
-export function addImageTag(image, tag) {}
+export function addImageTag(image, tag) {
+  return dispatch => {
+    utils.add_tag(image, tag).then(image => {
+      dispatch({
+        type: ADDED_IMAGE_TAG,
+        payload: image
+      });
+    });
+  };
+}
+
+export function removeImageTag(image, tag) {
+  return dispatch => {
+    utils.remove_tag(image, tag).then(image => {
+      dispatch({
+        type: REMOVED_IMAGE_TAG,
+        payload: image
+      });
+    });
+  };
+}

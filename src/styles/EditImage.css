@@ -15,3 +15,8 @@
   max-width: calc(100vw - 30px);
   max-height: calc(100vw - 20%);
 }
+
+.edit-image-tags {
+  display: flex;
+  flex-direction: row;
+}

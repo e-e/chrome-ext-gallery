@@ -42,3 +42,20 @@ body {
 .content-section:not(:last-child) {
   margin-bottom: 15px;
 }
+
+.button {
+  padding: 5px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: #25354f;
+  box-sizing: border-box;
+  border: 1px solid white;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #25354f;
+  color: white;
+}

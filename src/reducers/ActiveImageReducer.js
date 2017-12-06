@@ -1,9 +1,13 @@
-import { SET_ACTIVE_IMAGE } from '../actions';
+import {
+  SET_ACTIVE_IMAGE,
+  ADDED_IMAGE_TAG,
+  REMOVED_IMAGE_TAG
+} from '../actions';
 
 const DEFUALT_STATE = {
   id: null,
   src: null,
-  categories: []
+  tags: []
 };
 function returnLog(obj, label = '', doLog = true) {
   doLog && console.log(label, obj);
@@ -12,6 +16,8 @@ function returnLog(obj, label = '', doLog = true) {
 
 export default (state = DEFUALT_STATE, action) => {
   switch (action.type) {
+    case ADDED_IMAGE_TAG:
+    case REMOVED_IMAGE_TAG:
     case SET_ACTIVE_IMAGE:
       return returnLog({ ...state, ...action.payload }, 'active image');
     default:
