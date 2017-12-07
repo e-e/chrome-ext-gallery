@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setView, addImageTag, removeImageTag } from '../actions';
+import { setView, addImageTag, removeImageTag, removeImage } from '../actions';
 
 import ContentSection from './ContentSection';
 import ViewTopButtonBar from './ViewTopButtonBar';
@@ -25,7 +25,6 @@ class EditImage extends Component {
   }
   checkForEnterKey(e) {
     if (e.key === 'Enter') {
-      console.log('save value');
       this.addNewTag();
       e.target.blur();
     }
@@ -40,15 +39,20 @@ class EditImage extends Component {
     ));
   }
   render() {
-    console.log('IMAGE: ', this.props.image);
     return (
       <div className="edit-image">
-        <ContentSection>
+        <ContentSection className="button-group sp-btw">
           <button
             className="button"
             onClick={() => this.props.setView('gallery')}
           >
             Back to Gallery
+          </button>
+          <button
+            className="button button-red"
+            onClick={() => this.props.removeImage(this.props.image)}
+          >
+            Delete
           </button>
         </ContentSection>
         <ContentSection>
@@ -83,5 +87,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   setView,
   addImageTag,
-  removeImageTag
+  removeImageTag,
+  removeImage
 })(EditImage);
