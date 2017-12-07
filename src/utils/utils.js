@@ -1,4 +1,15 @@
 /* global chrome */
+export const VIDEO_EXTNS = ['webm', 'mp4'];
+export const IMAGE_EXTNS = ['png', 'gif', 'jpg', 'jpeg', 'webp'];
+export function get_extn(path) {
+  return path
+    .split('.')
+    .pop()
+    .trim();
+}
+export function is_video(path) {
+  return VIDEO_EXTNS.includes(get_extn(path).toLowerCase());
+}
 export function guid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)

@@ -5,6 +5,7 @@ import { setView, addImageTag, removeImageTag, removeImage } from '../actions';
 import ContentSection from './ContentSection';
 import ViewTopButtonBar from './ViewTopButtonBar';
 import ImageTag from './ImageTag';
+import MediaElement from './MediaElement';
 
 import '../styles/EditImage.css';
 
@@ -57,7 +58,7 @@ class EditImage extends Component {
         </ContentSection>
         <ContentSection>
           <div className="image-container">
-            <img src={this.props.image.src} />
+            <MediaElement className="media" src={this.props.image.src} />
           </div>
         </ContentSection>
         <ContentSection>

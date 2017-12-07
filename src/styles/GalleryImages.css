@@ -19,7 +19,7 @@
   border: 1px solid white;
   cursor: pointer;
 }
-.gallery-image img {
+.gallery-image .media {
   width: 100%;
   min-width: calc(calc(470px / 3));
   min-height: calc(calc(470px / 3));
