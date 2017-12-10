@@ -119,3 +119,17 @@ export function remove_tag(image, tag) {
     });
   });
 }
+
+export function get_unique_tags(images) {
+  let tags = [];
+  images.forEach(image => {
+    image.tags.forEach(tag => {
+      if (!tags.includes(tag)) tags.push(tag);
+    });
+  });
+  return tags.sort(sort_ignore_case);
+}
+
+export function sort_ignore_case(a, b) {
+  return a.toLowerCase().localeCompare(b.toLowerCase());
+}

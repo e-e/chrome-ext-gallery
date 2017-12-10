@@ -10,6 +10,7 @@ export const NEXT_GALLERY_PAGE = 'NEXT_GALLERY_PAGE';
 export const PREV_GALLERY_PAGE = 'PREV_GALLERY_PAGE';
 export const ADDED_IMAGE_TAG = 'ADDED_IMAGE_TAG';
 export const REMOVED_IMAGE_TAG = 'REMOVED_IMAGE_TAG';
+export const ADD_FILTER_TAG = 'ADD_FILTER_TAG';
 
 export function loadImagesFromLocalStorage() {
   return dispatch => {
@@ -113,5 +114,12 @@ export function removeImageTag(image, tag) {
         payload: image
       });
     });
+  };
+}
+
+export function addFilterTag(tag) {
+  return {
+    type: ADD_FILTER_TAG,
+    payload: tag
   };
 }

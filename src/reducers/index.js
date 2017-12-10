@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import AppStateReducer from './AppStateReducer';
 import ImagesReducer from './ImagesReducer';
 import ActiveImageReducer from './ActiveImageReducer';
+import TagsReducer from './TagsReducer';
 
 import GalleryImages from '../components/GalleryImages';
 import GalleryTags from '../components/GalleryTags';
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   activeImage: ActiveImageReducer,
   appState: AppStateReducer,
   images: ImagesReducer,
+  tags: TagsReducer,
   views: state => [
     { view: 'gallery', label: 'Gallery', component: GalleryImages, menu: true },
     { view: 'tags', label: 'Tags', component: GalleryTags, menu: true },

@@ -10,10 +10,14 @@ import {
 import GalleryImage from './GalleryImage';
 import Pagination from './Pagination';
 import ContentSection from './ContentSection';
+import Alert from './Alert';
 
 import '../styles/GalleryImages.css';
 
 class GalleryImages extends Component {
+  renderNoImages() {
+    return <Alert type="info" message="You have not saved any images..." />;
+  }
   renderImages() {
     const {
       images,
@@ -23,6 +27,7 @@ class GalleryImages extends Component {
       removeImage,
       setActiveImage
     } = this.props;
+    if (!total) return this.renderNoImages();
 
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
@@ -39,20 +44,24 @@ class GalleryImages extends Component {
     });
   }
   render() {
+    let pagination = null;
+    if (this.props.total) {
+      pagination = (
+        <Pagination
+          total={this.props.total}
+          page={this.props.page}
+          perPage={this.props.perPage}
+          onPrev={this.props.prevGalleryPage}
+          onNext={this.props.nextGalleryPage}
+        />
+      );
+    }
     return (
       <div className="gallery-images-wrap">
         <ContentSection>
           <div className="gallery-images">{this.renderImages()}</div>
         </ContentSection>
-        <ContentSection>
-          <Pagination
-            total={this.props.total}
-            page={this.props.page}
-            perPage={this.props.perPage}
-            onPrev={this.props.prevGalleryPage}
-            onNext={this.props.nextGalleryPage}
-          />
-        </ContentSection>
+        <ContentSection>{pagination}</ContentSection>
       </div>
     );
   }

@@ -17,11 +17,11 @@ class Pagination extends Component {
   }
   renderPages() {
     const pages = Math.ceil(this.props.total / this.props.perPage);
-    return (
-      <div className="pagintaion-section page-num-list">
-        {this.props.page} / {pages}
-      </div>
-    );
+    let indicator = null;
+    if (pages) {
+      indicator = `${this.props.page} / ${pages}`;
+    }
+    return <div className="pagintaion-section page-num-list">{indicator}</div>;
   }
   renderNext() {
     return (

@@ -74,3 +74,13 @@ body {
   background-color: #25354f;
   color: white;
 }
+
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: rgba(100, 100, 100, 0.4);
+  color: white;
+  border: 1px solid rgba(50, 50, 50, 0.8);
+}

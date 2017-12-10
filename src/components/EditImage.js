@@ -62,6 +62,9 @@ class EditImage extends Component {
           </div>
         </ContentSection>
         <ContentSection>
+          <div>{this.props.image.src}</div>
+        </ContentSection>
+        <ContentSection>
           <div className="tag-form">
             <div>
               <input
