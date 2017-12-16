@@ -93,3 +93,11 @@ a {
 .gallery-images video.media {
   object-fit: cover;
 }
+
+input {
+  border: 2px solid #444;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #25354f;
+}

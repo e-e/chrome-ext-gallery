@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addImage } from '../actions';
 
+import MediaElement from './MediaElement';
+
 class AddImageForm extends Component {
   constructor(props) {
     super(props);
@@ -14,21 +16,19 @@ class AddImageForm extends Component {
     this.setState({ src: event.target.value });
   }
   render() {
+    const image = !this.state.src.trim().length ? null : (
+      <div className="form-row">
+        <MediaElement src={this.state.src.trim()} />
+      </div>
+    );
     return (
       <div className="add-form">
-        {function() {
-          if (this.state.src.trim().length) {
-            return (
-              <div className="form-row">
-                <img src={this.state.src.trim()} alt="" />
-              </div>
-            );
-          }
-        }.bind(this)()}
+        {image}
         <div className="form-row">
           <input onChange={this.onchange} />
           <button
             type="button"
+            className="button"
             onClick={() => this.props.addImage(this.state.src)}
           >
             +
