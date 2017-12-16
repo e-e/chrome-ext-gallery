@@ -11,12 +11,24 @@
   align-items: center;
 }
 
-.image-container .media {
+.image-container {
   max-width: calc(100vw - 30px);
   max-height: calc(100vw - 20%);
+}
+
+.image-container .media {
+  flex: 1;
+  max-width: 100%;
+  height: auto;
+  max-height: calc(100vw - 30vw);
 }
 
 .edit-image-tags {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.edit-image-tags .tag:not(:last-child) {
+  margin-right: 5px;
 }

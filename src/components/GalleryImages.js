@@ -59,7 +59,13 @@ class GalleryImages extends Component {
     return (
       <div className="gallery-images-wrap">
         <ContentSection>
-          <div className="gallery-images">{this.renderImages()}</div>
+          <div
+            className={`gallery-images${
+              !this.props.images.length ? ' no-images' : ''
+            }`}
+          >
+            {this.renderImages()}
+          </div>
         </ContentSection>
         <ContentSection>{pagination}</ContentSection>
       </div>

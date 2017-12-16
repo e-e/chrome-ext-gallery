@@ -24,10 +24,12 @@ export default (state = DEFUALT_STATE, action) => {
       }
       return { ...state, filter };
     case ADDED_IMAGE_TAG:
-      if (state.unique.includes(action.payload)) break;
-      let tags = [...state.unique, action.payload].sort(sort_ignore_case);
-      console.log(action.payload, 'tags: ', tags);
+      const { tag } = action.payload;
+      if (state.unique.includes(tag)) break;
+      let tags = [...state.unique, action.tag].sort(sort_ignore_case);
       return { ...state, unique: tags };
+    default:
+      break;
   }
   return state;
 };

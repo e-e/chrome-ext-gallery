@@ -5,6 +5,10 @@
   margin: 0px;
   padding: 0px;
 }
+.gallery-images.no-images {
+  justify-content: center;
+  align-items: center;
+}
 .gallery-image {
   box-sizing: border-box;
   margin: 0px;
@@ -12,15 +16,17 @@
   border: 1px solid rgba(0, 0, 0, 0);
   width: calc(calc(470px / 3));
   height: calc(calc(470px / 3));
-  /*background-color: white;*/
   overflow: hidden;
 }
 .gallery-image:hover {
-  border: 1px solid white;
+  /* border: 1px solid white; */
+  opacity: 0.8;
   cursor: pointer;
 }
 .gallery-image .media {
   width: 100%;
   min-width: calc(calc(470px / 3));
   min-height: calc(calc(470px / 3));
+}
+.gallery-images .alert.alert-info {
 }

@@ -1,0 +1,9 @@
+.gallery-tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.gallery-tags .tag:not(:last-child) {
+  margin-right: 5px;
+}

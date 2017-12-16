@@ -8,8 +8,9 @@ import {
 const DEFUALT_STATE = {
   images: [],
   page: 1,
-  perPage: 12,
-  perRow: 3
+  perPage: 9,
+  perRow: 3,
+  filterTags: []
 };
 
 export default (state = DEFUALT_STATE, action) => {
@@ -29,6 +30,8 @@ export default (state = DEFUALT_STATE, action) => {
         break;
       }
       return { ...state, page: state.page - 1 };
+    default:
+      break;
   }
   return state;
 };

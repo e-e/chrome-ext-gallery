@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import '../styles/Pagination.css';
 
 class Pagination extends Component {
-  constructor(props) {
-    super(props);
-  }
   renderPrev() {
+    const pages = Math.ceil(this.props.total / this.props.perPage);
+    if (pages === 1) return null;
     return (
       <div
-        className="pagintaion-section prev-next prev"
+        className="pagintaion-section prev-next prev button"
         onClick={this.props.onPrev}
       >
         Prev
@@ -24,9 +23,11 @@ class Pagination extends Component {
     return <div className="pagintaion-section page-num-list">{indicator}</div>;
   }
   renderNext() {
+    const pages = Math.ceil(this.props.total / this.props.perPage);
+    if (pages === 1) return null;
     return (
       <div
-        className="pagintaion-section prev-next next"
+        className="pagintaion-section prev-next next button"
         onClick={this.props.onNext}
       >
         Next

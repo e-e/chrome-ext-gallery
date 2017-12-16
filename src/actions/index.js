@@ -100,13 +100,14 @@ export function addImageTag(image, tag) {
     utils.add_tag(image, tag).then(image => {
       dispatch({
         type: ADDED_IMAGE_TAG,
-        payload: image
+        payload: { image, tag }
       });
     });
   };
 }
 
 export function removeImageTag(image, tag) {
+  console.log(image, tag);
   return dispatch => {
     utils.remove_tag(image, tag).then(image => {
       dispatch({

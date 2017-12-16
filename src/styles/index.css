@@ -6,6 +6,9 @@ body {
   width: 500px;
   /*min-height: 500px;*/
 }
+a {
+  color: white;
+}
 #app {
   display: block;
   width: 100%;
@@ -65,13 +68,15 @@ body {
   background-color: rgba(255, 255, 255, 0);
 }
 .button.button-red:hover {
-  background-color: #cc4b37;
+  /* background-color: #cc4b37; */
+  background-color: rgba(204, 75, 55, 0.5);
   color: white;
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: #25354f;
+  /* background-color: #25354f; */
+  background-color: rgba(255, 255, 255, 0.3);
   color: white;
 }
 
@@ -83,4 +88,8 @@ body {
   background-color: rgba(100, 100, 100, 0.4);
   color: white;
   border: 1px solid rgba(50, 50, 50, 0.8);
+}
+
+.gallery-images video.media {
+  object-fit: cover;
 }

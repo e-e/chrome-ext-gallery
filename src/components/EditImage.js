@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { setView, addImageTag, removeImageTag, removeImage } from '../actions';
 
 import ContentSection from './ContentSection';
-import ViewTopButtonBar from './ViewTopButtonBar';
-import ImageTag from './ImageTag';
+import Tag from './Tag';
 import MediaElement from './MediaElement';
 
 import '../styles/EditImage.css';
@@ -32,7 +31,7 @@ class EditImage extends Component {
   }
   renderTags() {
     return this.props.image.tags.map(tag => (
-      <ImageTag
+      <Tag
         tag={tag}
         image={this.props.image}
         onDelete={this.props.removeImageTag}
@@ -62,13 +61,18 @@ class EditImage extends Component {
           </div>
         </ContentSection>
         <ContentSection>
-          <div>{this.props.image.src}</div>
+          <div>
+            <a href={this.props.image.src} target="_blank">
+              {this.props.image.src}
+            </a>
+          </div>
         </ContentSection>
         <ContentSection>
           <div className="tag-form">
             <div>
               <input
                 type="text"
+                placeholder="tags"
                 value={this.state.newTag}
                 onChange={this.onNewTagChange}
                 onKeyPress={this.checkForEnterKey}

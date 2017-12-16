@@ -17,6 +17,7 @@ function returnLog(obj, label = '', doLog = true) {
 export default (state = DEFUALT_STATE, action) => {
   switch (action.type) {
     case ADDED_IMAGE_TAG:
+      return returnLog({ ...state, ...action.payload.image }, 'active image');
     case REMOVED_IMAGE_TAG:
     case SET_ACTIVE_IMAGE:
       return returnLog({ ...state, ...action.payload }, 'active image');

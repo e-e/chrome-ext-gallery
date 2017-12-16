@@ -20,7 +20,7 @@ class AddImageForm extends Component {
           if (this.state.src.trim().length) {
             return (
               <div className="form-row">
-                <img src={this.state.src.trim()} />
+                <img src={this.state.src.trim()} alt="" />
               </div>
             );
           }

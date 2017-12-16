@@ -74,10 +74,11 @@ function set_images(images) {
 /* ----------------------------------- */
 
 function saveImage(target, tab) {
-  console.log(target);
+  console.log('SAVE: ', target);
   const image = {
     id: guid(),
     src: target.srcUrl,
+    pageUrl: target.pageUrl,
     tags: []
   };
   get_images()
@@ -94,7 +95,7 @@ function saveImage(target, tab) {
 }
 
 chrome.contextMenus.create({
-  title: 'Save image to GALLERY',
+  title: 'G A L L E R Y',
   contexts: ['image', 'video'],
   onclick: saveImage
 });
