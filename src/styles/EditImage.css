@@ -34,3 +34,28 @@
 .edit-image-tags .tag:not(:last-child) {
   margin-right: 5px;
 }
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
+.links .link-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+}
+.links .link-item:not(:last-child) {
+  margin-bottom: 5px;
+}
+.links .link-item .link-label {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  padding: 2px 8px;
+}
+.links .link-item .link {
+  padding: 2px 8px;
+  overflow-wrap: break-word;
+}

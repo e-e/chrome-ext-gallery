@@ -100,4 +100,8 @@ input {
   border-radius: 4px;
   font-size: 14px;
   color: #25354f;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+input:focus {
+  background-color: rgba(255, 255, 255, 1);
 }

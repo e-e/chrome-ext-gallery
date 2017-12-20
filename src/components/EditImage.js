@@ -61,10 +61,23 @@ class EditImage extends Component {
           </div>
         </ContentSection>
         <ContentSection>
-          <div>
-            <a href={this.props.image.src} target="_blank">
-              {this.props.image.src}
-            </a>
+          <div className="links">
+            <div className="link-item">
+              <span className="link-label">URL</span>
+              <a className="link" href={this.props.image.src} target="_blank">
+                {this.props.image.src}
+              </a>
+            </div>
+            <div className="link-item">
+              <span className="link-label">SRC</span>
+              <a
+                className="link"
+                href={this.props.image.pageUrl}
+                target="_blank"
+              >
+                {this.props.image.pageUrl}
+              </a>
+            </div>
           </div>
         </ContentSection>
         <ContentSection>
@@ -72,7 +85,7 @@ class EditImage extends Component {
             <div>
               <input
                 type="text"
-                placeholder="tags"
+                placeholder="Add tags"
                 value={this.state.newTag}
                 onChange={this.onNewTagChange}
                 onKeyPress={this.checkForEnterKey}

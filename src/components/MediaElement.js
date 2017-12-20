@@ -1,8 +1,15 @@
 import React from 'react';
 import { is_video } from '../utils';
-
-const MediaElement = ({ src, onload, className = '', controls = true }) => {
-  onload = typeof onload === 'function' ? onload : () => {};
+import '../styles/MediaElement.css';
+const noop = () => {};
+const MediaElement = ({
+  src,
+  onload = noop,
+  className = '',
+  controls = true
+}) => {
+  // onload = typeof onload === 'function' ? onload : () => {};
+  className = `media-element ${className}`.trim();
   if (is_video(src)) {
     return (
       <video
