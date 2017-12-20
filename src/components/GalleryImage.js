@@ -25,7 +25,11 @@ class GalleryImage extends Component {
   render() {
     const { image, setActive } = this.props;
     return (
-      <div className="gallery-image" onClick={() => setActive(image)}>
+      <div
+        className="gallery-image"
+        onClick={() => setActive(image)}
+        key={JSON.stringify(image)}
+      >
         {this.renderLoading()}
         <MediaElement
           className="media"

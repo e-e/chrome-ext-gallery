@@ -102,6 +102,7 @@ export function addImageTag(image, tag) {
         type: ADDED_IMAGE_TAG,
         payload: { image, tag }
       });
+      // loadImagesFromLocalStorage();
     });
   };
 }

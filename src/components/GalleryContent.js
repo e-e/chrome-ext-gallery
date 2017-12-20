@@ -6,7 +6,6 @@ class GalleryContent extends Component {
     for (let i = 0; i < this.props.views.length; i++) {
       if (this.props.views[i].view === this.props.view) {
         let Html = this.props.views[i].component;
-        console.log('HTML: ', Html, this.props.views[i]);
         return <Html />;
       }
     }

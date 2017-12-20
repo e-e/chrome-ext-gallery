@@ -36,6 +36,8 @@ class GalleryImages extends Component {
     return pageImages.map(image => {
       return (
         <GalleryImage
+          key={JSON.stringify(image)}
+          dataKey={JSON.stringify(image)}
           image={image}
           remove={removeImage}
           setActive={setActiveImage}
