@@ -1,4 +1,5 @@
 .tag {
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -34,4 +35,9 @@
 .tag .tag-delete:hover {
   background-color: red;
   color: white;
+}
+
+.tag.highlighted {
+  /* border: 1px solid red; */
+  box-shadow: inset 0px 0px 0px 1px red;
 }

@@ -4,11 +4,15 @@ import {
   NEXT_GALLERY_PAGE,
   PREV_GALLERY_PAGE,
   ADDED_IMAGE_TAG,
-  REMOVED_IMAGE_TAG
+  REMOVED_IMAGE_TAG,
+  ADD_FILTER_TAG
 } from '../actions';
+
+import { get_unique_tags, sort_ignore_case } from '../utils';
 
 const DEFUALT_STATE = {
   images: [],
+  allImages: [],
   page: 1,
   perPage: 9,
   perRow: 3,
@@ -23,7 +27,7 @@ export default (state = DEFUALT_STATE, action) => {
     case CLEAR_ALL_IMAGES:
       return { ...state, images: [] };
     case SET_IMAGES_FROM_LOCAL_STORAGE:
-      return { ...state, images: action.payload };
+      return { ...state, images: action.payload, allImages: action.payload };
     case NEXT_GALLERY_PAGE:
       if (state.page + 1 > totalPages) {
         break;
@@ -52,6 +56,28 @@ export default (state = DEFUALT_STATE, action) => {
         }
       }
       return { ...state, images };
+    case ADD_FILTER_TAG:
+      let filterTags = [...state.filterTags];
+      if (!filterTags.includes(action.payload)) {
+        filterTags.push(action.payload);
+        filterTags.sort(sort_ignore_case);
+      } else {
+        console.log('filterTags: ', filterTags);
+        filterTags.splice(filterTags.indexOf(action.payload), 1);
+        console.log('filterTags: ', filterTags);
+      }
+      images = !filterTags.length
+        ? state.allImages
+        : state.allImages.filter(image => {
+            for (let i = 0; i < image.tags.length; i++) {
+              if (filterTags.includes(image.tags[i])) {
+                return true;
+              }
+            }
+            return false;
+          });
+      console.log('images: ', images);
+      return { ...state, filterTags, images };
     default:
       break;
   }

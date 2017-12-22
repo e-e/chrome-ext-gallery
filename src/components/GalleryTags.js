@@ -7,7 +7,15 @@ import '../styles/GalleryTags.css';
 class GalleryTags extends Component {
   renderTags() {
     return this.props.tags.unique.map(tag => {
-      return <Tag tag={tag} onDelete={() => {}} nodelete={true} key={tag} />;
+      return (
+        <Tag
+          tag={tag}
+          onClick={(image, tag) => this.props.addFilterTag(tag)}
+          nodelete={true}
+          key={tag}
+          highlighted={this.props.filterTags.includes(tag)}
+        />
+      );
     });
   }
   render() {
@@ -15,6 +23,6 @@ class GalleryTags extends Component {
   }
 }
 const mapStateToProps = state => {
-  return { tags: state.tags };
+  return { tags: state.tags, filterTags: state.images.filterTags };
 };
-export default connect(mapStateToProps)(GalleryTags);
+export default connect(mapStateToProps, { addFilterTag })(GalleryTags);

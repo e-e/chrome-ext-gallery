@@ -120,6 +120,7 @@ export function removeImageTag(image, tag) {
 }
 
 export function addFilterTag(tag) {
+  console.log('ACTIONS#addFilterTag', tag);
   return {
     type: ADD_FILTER_TAG,
     payload: tag

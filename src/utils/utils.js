@@ -131,6 +131,5 @@ export function get_unique_tags(images) {
 }
 
 export function sort_ignore_case(a, b) {
-  console.log('a: ', a, 'b: ', b);
   return a.toLowerCase().localeCompare(b.toLowerCase());
 }

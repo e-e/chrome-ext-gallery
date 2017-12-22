@@ -16,7 +16,10 @@ import '../styles/GalleryImages.css';
 
 class GalleryImages extends Component {
   renderNoImages() {
-    return <Alert type="info" message="You have not saved any images..." />;
+    let message = this.props.filterTags.length
+      ? 'You do not have any images with the selected tag(s).'
+      : 'You have not saved any images...';
+    return <Alert type="info" message={message} />;
   }
   renderImages() {
     const {
@@ -79,7 +82,8 @@ const mapStateToProps = state => {
     images: state.images.images,
     total: state.images.images.length,
     page: state.images.page,
-    perPage: state.images.perPage
+    perPage: state.images.perPage,
+    filterTags: state.images.filterTags
   };
 };
 export default connect(mapStateToProps, {

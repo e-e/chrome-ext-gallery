@@ -22,7 +22,6 @@ export default (state = DEFUALT_STATE, action) => {
       if (!image.tags.includes(tag)) {
         image.tags.push(tag);
       }
-      console.log('ActiveImageReducer#ADDED_IMAGE_TAG', action);
       // return returnLog({ ...state, ...action.payload.image }, 'active image');
       return returnLog({ ...state, ...image }, 'active image');
     case REMOVED_IMAGE_TAG:
