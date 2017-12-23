@@ -1,0 +1,28 @@
+.links {
+  display: flex;
+  flex-direction: row;
+}
+.links .link-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.links .link-item:not(:last-child) {
+  margin-right: 10px;
+}
+.links .link-item .link-label {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  padding: 2px 8px;
+}
+.links .link-item .link-label:hover {
+  color: #444;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.links .link-item .link {
+  padding: 2px 8px;
+  overflow-wrap: break-word;
+}

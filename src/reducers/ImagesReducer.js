@@ -62,9 +62,7 @@ export default (state = DEFUALT_STATE, action) => {
         filterTags.push(action.payload);
         filterTags.sort(sort_ignore_case);
       } else {
-        console.log('filterTags: ', filterTags);
         filterTags.splice(filterTags.indexOf(action.payload), 1);
-        console.log('filterTags: ', filterTags);
       }
       images = !filterTags.length
         ? state.allImages
@@ -76,8 +74,7 @@ export default (state = DEFUALT_STATE, action) => {
             }
             return false;
           });
-      console.log('images: ', images);
-      return { ...state, filterTags, images };
+      return { ...state, filterTags, images, page: 1 };
     default:
       break;
   }

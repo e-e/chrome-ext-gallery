@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setView, addImageTag, removeImageTag, removeImage } from '../actions';
 
+import { is_video } from '../utils';
+
+import ConfirmButton from 'react-confirmation-button';
 import ContentSection from './ContentSection';
 import Tag from './Tag';
 import MediaElement from './MediaElement';
+import CopyTextButton from './CopyTextButton';
 
 import '../styles/EditImage.css';
 
@@ -48,12 +52,11 @@ class EditImage extends Component {
           >
             Back to Gallery
           </button>
-          <button
-            className="button button-red"
-            onClick={() => this.props.removeImage(this.props.image)}
-          >
-            Delete
-          </button>
+
+          <ConfirmButton
+            buttonText="Delete"
+            onConfirm={() => this.props.removeImage(this.props.image)}
+          />
         </ContentSection>
         <ContentSection>
           <div className="image-container">
@@ -62,23 +65,18 @@ class EditImage extends Component {
         </ContentSection>
         <ContentSection>
           <div className="links">
-            <div className="link-item">
-              <span className="link-label">URL</span>
-              <a className="link" href={this.props.image.src} target="_blank">
-                {this.props.image.src}
-              </a>
-            </div>
-            <div className="link-item">
-              <span className="link-label">SRC</span>
-              <a
-                className="link"
-                href={this.props.image.pageUrl}
-                target="_blank"
-              >
-                {this.props.image.pageUrl}
-              </a>
-            </div>
+            <CopyTextButton
+              text={this.props.image.src}
+              label={
+                (is_video(this.props.image.src) ? 'Video' : 'Image') + ' URL'
+              }
+            />
+            <CopyTextButton
+              text={this.props.image.pageUrl}
+              label="Source Page"
+            />
           </div>
+          <div className="click-top-copy">Click to copy</div>
         </ContentSection>
         <ContentSection>
           <div className="tag-form">
