@@ -8,7 +8,7 @@ import '../styles/GalleryTags.css';
 class GalleryTags extends Component {
   renderTags() {
     const { tags, filterTags, addFilterTag, hasImages } = this.props;
-    if (!tags.length) {
+    if (!tags.unique.length) {
       let message = hasImages
         ? 'You have not added any tags yet.'
         : "You have not added any tags yet. But you also do not have any images, so I don't know what to tell you!";
