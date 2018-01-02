@@ -4,7 +4,7 @@ import { setView, addImageTag, removeImageTag, removeImage } from '../actions';
 
 import { is_video } from '../utils';
 
-import ConfirmButton from 'react-confirmation-button';
+import ConfirmationButton from 'react-confirmation-button';
 import ContentSection from './ContentSection';
 import Tag from './Tag';
 import MediaElement from './MediaElement';
@@ -53,9 +53,13 @@ class EditImage extends Component {
             Back to Gallery
           </button>
 
-          <ConfirmButton
+          <ConfirmationButton
             buttonText="Delete"
             onConfirm={() => this.props.removeImage(this.props.image)}
+            wrapClass="button-red-wrap"
+            buttonClass="button button-red"
+            confirmClass="button button-red-confirm"
+            cancelClass="button button-red-cancel"
           />
         </ContentSection>
         <ContentSection>

@@ -15,15 +15,30 @@
   box-sizing: border-box;
   border: 1px solid white;
 }
+.button-red-wrap {
+  display: flex;
+}
 .button-red {
   color: #cc4b37;
   border-color: #cc4b37;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0);
 }
 .button.button-red:hover {
   /* background-color: #cc4b37; */
   background-color: rgba(204, 75, 55, 0.5);
   color: white;
+}
+.button.button-red-confirm {
+  color: white;
+  border-color: #cc4b37;
+  background-color: rgba(204, 75, 55, 0.5);
+  border-right: none;
+}
+.button.button-red-cancel {
+  color: #888;
+  border-color: #888;
+  background-color: rgba(0, 0, 0, 0);
+  border-left: none;
 }
 
 .button:hover {

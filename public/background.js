@@ -93,9 +93,9 @@ function saveImage(target, tab) {
       console.log(images);
     });
 }
-
+const manifest = chrome.runtime.getManifest();
 chrome.contextMenus.create({
-  title: 'G A L L E R Y',
+  title: `${manifest.name}!`,
   contexts: ['image', 'video'],
   onclick: saveImage
 });
