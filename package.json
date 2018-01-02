@@ -1,5 +1,5 @@
 {
-  "name": "gallery2",
+  "name": "tameyo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,11 +13,8 @@
   },
   "watch": {
     "build": {
-      "patterns": [
-        "src",
-        "public"
-      ],
-      "extensions": "js,css.json,html"
+      "patterns": ["src", "public"],
+      "extensions": "js,css,json,html"
     }
   },
   "scripts": {

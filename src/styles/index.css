@@ -45,40 +45,6 @@ a {
 .content-section:not(:last-child) {
   margin-bottom: 15px;
 }
-.button-group {
-  display: flex;
-  flex-direction: row;
-}
-.button-group.sp-btw {
-  justify-content: space-between;
-}
-.button {
-  padding: 5px 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  color: #25354f;
-  box-sizing: border-box;
-  border: 1px solid white;
-}
-.button-red {
-  color: #cc4b37;
-  border-color: #cc4b37;
-  background-color: rgba(255, 255, 255, 0);
-}
-.button.button-red:hover {
-  /* background-color: #cc4b37; */
-  background-color: rgba(204, 75, 55, 0.5);
-  color: white;
-}
-
-.button:hover {
-  cursor: pointer;
-  /* background-color: #25354f; */
-  background-color: rgba(255, 255, 255, 0.3);
-  color: white;
-}
 
 .alert {
   display: flex;

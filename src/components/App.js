@@ -11,6 +11,7 @@ import { loadImagesFromLocalStorage, clearAllImages } from '../actions';
 import Gallery from './Gallery';
 
 import '../styles/App.css';
+import '../styles/buttons.css';
 
 class App extends Component {
   componentWillMount() {

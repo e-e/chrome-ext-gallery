@@ -71,10 +71,12 @@ class EditImage extends Component {
                 (is_video(this.props.image.src) ? 'Video' : 'Image') + ' URL'
               }
             />
-            <CopyTextButton
-              text={this.props.image.pageUrl}
-              label="Source Page"
-            />
+            {this.props.image.src === this.props.image.pageUrl ? null : (
+              <CopyTextButton
+                text={this.props.image.pageUrl}
+                label="Source Page"
+              />
+            )}
           </div>
           <div className="click-top-copy">Click to copy</div>
         </ContentSection>
