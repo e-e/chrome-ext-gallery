@@ -6,11 +6,17 @@ export const SET_IMAGES_FROM_LOCAL_STORAGE = 'SET_IMAGES_FROM_LOCAL_STORAGE';
 export const SET_VIEW = 'SET_VIEW';
 export const CLEAR_ALL_IMAGES = 'CLEAR_ALL_IMAGES';
 export const SET_ACTIVE_IMAGE = 'SET_ACTIVE_IMAGE';
+export const CLEAR_ACTIVE_IMAGE = 'CLEAR_ACTIVE_IMAGE';
 export const NEXT_GALLERY_PAGE = 'NEXT_GALLERY_PAGE';
 export const PREV_GALLERY_PAGE = 'PREV_GALLERY_PAGE';
 export const ADDED_IMAGE_TAG = 'ADDED_IMAGE_TAG';
 export const REMOVED_IMAGE_TAG = 'REMOVED_IMAGE_TAG';
 export const ADD_FILTER_TAG = 'ADD_FILTER_TAG';
+export const SET_SLIDE_INDEX = 'SET_SLIDE_INDEX';
+
+export const GALLERY_INDEX = 0;
+export const EDIT_INDEX = 1;
+export const SETTINGS_INDEX = 2;
 
 export function loadImagesFromLocalStorage() {
   return dispatch => {
@@ -83,6 +89,12 @@ export function setActiveImage(image) {
   };
 }
 
+export function clearActiveImage() {
+  return {
+    type: CLEAR_ACTIVE_IMAGE
+  };
+}
+
 export function nextGalleryPage() {
   return {
     type: NEXT_GALLERY_PAGE
@@ -124,5 +136,12 @@ export function addFilterTag(tag) {
   return {
     type: ADD_FILTER_TAG,
     payload: tag
+  };
+}
+
+export function setSlideIndex(index) {
+  return {
+    type: SET_SLIDE_INDEX,
+    payload: index
   };
 }

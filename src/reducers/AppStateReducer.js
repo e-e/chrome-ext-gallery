@@ -1,11 +1,14 @@
 import {
   SET_IMAGES_FROM_LOCAL_STORAGE,
   SET_VIEW,
-  SET_ACTIVE_IMAGE
+  SET_ACTIVE_IMAGE,
+  SET_SLIDE_INDEX,
+  EDIT_INDEX
 } from '../actions';
 
 const DEFUALT_STATE = {
   imagesLoadedFromStorage: false,
+  slideIndex: 0,
   view: 'gallery'
 };
 
@@ -21,10 +24,10 @@ export default (state = DEFUALT_STATE, action) => {
         { ...state, imagesLoadedFromStorage: true, view: 'gallery' },
         'new state'
       );
-    case SET_VIEW:
-      return { ...state, view: action.payload };
+    case SET_SLIDE_INDEX:
+      return { ...state, slideIndex: action.payload };
     case SET_ACTIVE_IMAGE:
-      return { ...state, view: 'edit-image' };
+      return { ...state, slideIndex: EDIT_INDEX };
     default:
       return state;
   }

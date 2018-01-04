@@ -7,6 +7,8 @@ import {
   prevGalleryPage
 } from '../actions';
 
+import SwipeableViews from 'react-swipeable-views';
+
 import GalleryImage from './GalleryImage';
 import Pagination from './Pagination';
 import ContentSection from './ContentSection';

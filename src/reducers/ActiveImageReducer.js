@@ -1,12 +1,15 @@
 import {
   SET_ACTIVE_IMAGE,
+  CLEAR_ACTIVE_IMAGE,
   ADDED_IMAGE_TAG,
-  REMOVED_IMAGE_TAG
+  REMOVED_IMAGE_TAG,
+  SET_IMAGES_FROM_LOCAL_STORAGE
 } from '../actions';
 
-const DEFUALT_STATE = {
+const DEFAULT_STATE = {
   id: null,
   src: null,
+  pageUrl: null,
   tags: []
 };
 function returnLog(obj, label = '', doLog = true) {
@@ -14,7 +17,7 @@ function returnLog(obj, label = '', doLog = true) {
   return obj;
 }
 
-export default (state = DEFUALT_STATE, action) => {
+export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case ADDED_IMAGE_TAG:
       let tag = action.payload.tag;
@@ -24,9 +27,15 @@ export default (state = DEFUALT_STATE, action) => {
       }
       // return returnLog({ ...state, ...action.payload.image }, 'active image');
       return returnLog({ ...state, ...image }, 'active image');
+
     case REMOVED_IMAGE_TAG:
     case SET_ACTIVE_IMAGE:
       return returnLog({ ...state, ...action.payload }, 'active image');
+
+    case SET_IMAGES_FROM_LOCAL_STORAGE:
+    case CLEAR_ACTIVE_IMAGE:
+      return DEFAULT_STATE;
+
     default:
       return state;
   }
