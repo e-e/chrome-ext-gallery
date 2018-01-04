@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { loadImagesFromLocalStorage, clearAllImages } from '../actions';
 
 import Gallery from './Gallery';
@@ -19,9 +20,9 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <MuiThemeProvider>
         <Gallery />
-      </div>
+      </MuiThemeProvider>
     );
   }
 }

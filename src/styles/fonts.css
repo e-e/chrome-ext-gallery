@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Roberto';
+  src: url('/fonts/Roberto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roberto';
+  src: url('/fonts/Roberto-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roberto';
+  src: url('/fonts/Roberto-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roberto';
+  src: url('/fonts/Roberto-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roberto';
+  src: url('/fonts/Roberto-Black.ttf') format('truetype');
+  font-weight: bolder;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roberto';
+  src: url('/fonts/Roberto-BlackItalic.ttf') format('truetype');
+  font-weight: bolder;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roberto';
+  src: url('/fonts/Roberto-Thin.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roberto';
+  src: url('/fonts/Roberto-ThinItalic.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: italic;
+}
