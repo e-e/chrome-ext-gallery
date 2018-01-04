@@ -25,6 +25,7 @@ const styles = {
   }
 };
 
+/*
 // class MenuBar extends Component {
 //   renderMenuItems() {
 //     return this.props.views.filter(item => item.menu).map(item => {
@@ -46,6 +47,7 @@ const styles = {
 //     return <div className="menu-bar">{this.renderMenuItems()}</div>;
 //   }
 // }
+*/
 
 class MenuBar extends Component {
   constructor(props) {
