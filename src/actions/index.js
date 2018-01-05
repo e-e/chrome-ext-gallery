@@ -76,7 +76,8 @@ export function removeImage(image) {
     utils.remove_image(image).then(images => {
       dispatch({
         type: SET_IMAGES_FROM_LOCAL_STORAGE,
-        payload: images
+        payload: images,
+        removeImage: true
       });
     });
   };

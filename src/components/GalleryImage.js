@@ -9,9 +9,6 @@ class GalleryImage extends Component {
     this.mediaLoaded = this.mediaLoaded.bind(this);
     this.state = { loading: true };
   }
-  componentWillReceiveProps() {
-    this.setState({ loading: true });
-  }
   mediaLoaded(event) {
     this.setState({ loading: false });
   }
@@ -21,7 +18,6 @@ class GalleryImage extends Component {
     }
     return null;
   }
-
   render() {
     const { image, setActive } = this.props;
     return (

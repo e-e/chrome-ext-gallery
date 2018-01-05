@@ -3,13 +3,13 @@ import {
   SET_VIEW,
   SET_ACTIVE_IMAGE,
   SET_SLIDE_INDEX,
+  GALLERY_INDEX,
   EDIT_INDEX
 } from '../actions';
 
 const DEFUALT_STATE = {
   imagesLoadedFromStorage: false,
-  slideIndex: 0,
-  view: 'gallery'
+  slideIndex: 0
 };
 
 function returnLog(obj, label = '', doLog = true) {
@@ -21,9 +21,10 @@ export default (state = DEFUALT_STATE, action) => {
   switch (action.type) {
     case SET_IMAGES_FROM_LOCAL_STORAGE:
       return returnLog(
-        { ...state, imagesLoadedFromStorage: true, view: 'gallery' },
+        { ...state, imagesLoadedFromStorage: true, slideIndex: GALLERY_INDEX },
         'new state'
       );
+
     case SET_SLIDE_INDEX:
       return { ...state, slideIndex: action.payload };
     case SET_ACTIVE_IMAGE:
