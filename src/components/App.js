@@ -6,15 +6,20 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { loadImagesFromLocalStorage, clearAllImages } from '../actions';
-
-import darkTheme from '../themes/dark-theme';
 
 import Gallery from './Gallery';
 
 import '../styles/App.css';
 import '../styles/buttons.css';
+
+// const darkTheme = createMuiTheme({
+//   pallete: {
+//     type: 'dark'
+//   }
+// });
 
 class App extends Component {
   componentWillMount() {
@@ -22,7 +27,7 @@ class App extends Component {
   }
   render() {
     return (
-      <MuiThemeProvider theme={darkTheme}>
+      <MuiThemeProvider>
         <Gallery />
       </MuiThemeProvider>
     );
