@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { setView } from '../actions';
+import { Tabs, Tab } from 'material-ui/Tabs';
 
-import '../styles/MenuBar.css';
+import { connect } from 'react-redux';
+import {
+  setSlideIndex,
+  clearActiveImage,
+  GALLERY_INDEX,
+  SETTINGS_INDEX
+} from '../actions';
+
+// import '../styles/MenuBar.css';
 
 function classNames(obj = {}) {
   return Object.keys(obj).reduce((classStr, key) => {
@@ -10,28 +17,44 @@ function classNames(obj = {}) {
   }, '');
 }
 
-class MenuBar extends Component {
-  renderMenuItems() {
-    return this.props.views.filter(item => item.menu).map(item => {
-      const _classNames = classNames({
-        'menu-bar-item': true,
-        active: this.props.view === item.view
-      });
-      return (
-        <div
-          className={_classNames}
-          onClick={event => this.props.setView(item.view)}
-        >
-          {item.label}
-        </div>
-      );
-    });
+const styles = {
+  headline: {
+    fontSize: 24,
+    paddingTop: 16,
+    marginBottom: 12,
+    fontWeight: 400
+  },
+  slide: {
+    padding: 10
   }
+};
+
+class MenuBar extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(value) {
+    this.props.setSlideIndex(value);
+    this.props.clearActiveImage();
+  }
+
   render() {
-    return <div className="menu-bar">{this.renderMenuItems()}</div>;
+    return (
+      <div>
+        <Tabs onChange={this.handleChange} value={this.props.slideIndex}>
+          <Tab label="Gallery" value={GALLERY_INDEX} />
+          <Tab label="Settings" value={SETTINGS_INDEX} />
+        </Tabs>
+      </div>
+    );
   }
 }
+
 const mapStateToProps = state => {
-  return { view: state.appState.view, views: state.views };
+  return { slideIndex: state.appState.slideIndex };
 };
-export default connect(mapStateToProps, { setView })(MenuBar);
+export default connect(mapStateToProps, { setSlideIndex, clearActiveImage })(
+  MenuBar
+);

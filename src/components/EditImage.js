@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setView, addImageTag, removeImageTag, removeImage } from '../actions';
+import {
+  setView,
+  addImageTag,
+  removeImageTag,
+  removeImage,
+  clearActiveImage,
+  setSlideIndex,
+  GALLERY_INDEX
+} from '../actions';
 
 import { is_video } from '../utils';
 
 import ConfirmationButton from 'react-confirmation-button';
+import ConfirmButton from './ConfirmButton';
 import ContentSection from './ContentSection';
 import Tag from './Tag';
 import MediaElement from './MediaElement';
 import CopyTextButton from './CopyTextButton';
+
+import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
+import Chip from 'material-ui/Chip';
 
 import '../styles/EditImage.css';
 
@@ -19,6 +32,7 @@ class EditImage extends Component {
 
     this.onNewTagChange = this.onNewTagChange.bind(this);
     this.checkForEnterKey = this.checkForEnterKey.bind(this);
+    this.onBackClicked = this.onBackClicked.bind(this);
   }
   onNewTagChange(e) {
     this.setState({ newTag: e.target.value });
@@ -30,36 +44,30 @@ class EditImage extends Component {
   checkForEnterKey(e) {
     if (e.key === 'Enter') {
       this.addNewTag();
-      e.target.blur();
+      // e.target.blur();
     }
   }
   renderTags() {
     return this.props.image.tags.map(tag => (
-      <Tag
-        tag={tag}
-        image={this.props.image}
-        onDelete={this.props.removeImageTag}
-      />
+      <Chip
+        key={tag}
+        onRequestDelete={() => this.props.removeImageTag(this.props.image, tag)}
+      >
+        {tag}
+      </Chip>
     ));
+  }
+  onBackClicked() {
+    this.props.setSlideIndex(GALLERY_INDEX);
+    this.props.clearActiveImage();
   }
   render() {
     return (
       <div className="edit-image">
         <ContentSection className="button-group sp-btw">
-          <button
-            className="button"
-            onClick={() => this.props.setView('gallery')}
-          >
-            Back to Gallery
-          </button>
-
-          <ConfirmationButton
-            buttonText="Delete"
+          <FlatButton label="Back to Gallery" onClick={this.onBackClicked} />
+          <ConfirmButton
             onConfirm={() => this.props.removeImage(this.props.image)}
-            wrapClass="button-red-wrap"
-            buttonClass="button button-red"
-            confirmClass="button button-red-confirm"
-            cancelClass="button button-red-cancel"
           />
         </ContentSection>
         <ContentSection>
@@ -85,17 +93,13 @@ class EditImage extends Component {
           <div className="click-top-copy">Click to copy</div>
         </ContentSection>
         <ContentSection>
-          <div className="tag-form">
-            <div>
-              <input
-                type="text"
-                placeholder="Add tags"
-                value={this.state.newTag}
-                onChange={this.onNewTagChange}
-                onKeyPress={this.checkForEnterKey}
-              />
-            </div>
-          </div>
+          <TextField
+            hintText="Add a new tag"
+            floatingLabelText="Image Tags"
+            value={this.state.newTag}
+            onChange={this.onNewTagChange}
+            onKeyPress={this.checkForEnterKey}
+          />
         </ContentSection>
         <ContentSection>
           <div className="edit-image-tags">{this.renderTags()}</div>
@@ -113,5 +117,7 @@ export default connect(mapStateToProps, {
   setView,
   addImageTag,
   removeImageTag,
-  removeImage
+  removeImage,
+  clearActiveImage,
+  setSlideIndex
 })(EditImage);

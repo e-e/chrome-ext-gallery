@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FlatButton from 'material-ui/FlatButton';
 import '../styles/Pagination.css';
 
 class Pagination extends Component {
@@ -6,12 +7,11 @@ class Pagination extends Component {
     const pages = Math.ceil(this.props.total / this.props.perPage);
     if (pages === 1) return null;
     return (
-      <div
-        className="pagintaion-section prev-next prev button"
+      <FlatButton
         onClick={this.props.onPrev}
-      >
-        Prev
-      </div>
+        label="Previous"
+        className="pagination-section prev-next"
+      />
     );
   }
   renderPages() {
@@ -26,12 +26,11 @@ class Pagination extends Component {
     const pages = Math.ceil(this.props.total / this.props.perPage);
     if (pages === 1) return null;
     return (
-      <div
-        className="pagintaion-section prev-next next button"
+      <FlatButton
         onClick={this.props.onNext}
-      >
-        Next
-      </div>
+        label="Next"
+        className="pagination-section prev-next"
+      />
     );
   }
   render() {

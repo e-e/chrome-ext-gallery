@@ -23,11 +23,20 @@ export default (state = DEFUALT_STATE, action) => {
   const totalPages = Math.ceil(state.images.length / state.perPage);
   let images = state.images;
   let image;
+  let page = state.page;
   switch (action.type) {
     case CLEAR_ALL_IMAGES:
       return { ...state, images: [] };
     case SET_IMAGES_FROM_LOCAL_STORAGE:
-      return { ...state, images: action.payload, allImages: action.payload };
+      if (state.page > Math.ceil(action.payload.length / state.perPage)) {
+        page = page - 1;
+      }
+      return {
+        ...state,
+        images: action.payload,
+        allImages: action.payload,
+        page: page
+      };
     case NEXT_GALLERY_PAGE:
       if (state.page + 1 > totalPages) {
         break;
