@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dev": "npm-watch"
+    "dev": "npm-watch build"
   },
   "devDependencies": {
     "npm-watch": "^0.3.0"

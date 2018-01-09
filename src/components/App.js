@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { loadImagesFromLocalStorage, clearAllImages } from '../actions';
 
+import darkTheme from '../themes/dark-theme';
+
 import Gallery from './Gallery';
 
 import '../styles/App.css';
@@ -20,7 +22,7 @@ class App extends Component {
   }
   render() {
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider theme={darkTheme}>
         <Gallery />
       </MuiThemeProvider>
     );

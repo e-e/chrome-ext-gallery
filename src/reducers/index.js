@@ -3,6 +3,7 @@ import AppStateReducer from './AppStateReducer';
 import ImagesReducer from './ImagesReducer';
 import ActiveImageReducer from './ActiveImageReducer';
 import TagsReducer from './TagsReducer';
+import SettingsReducer from './SettingsReducer';
 
 import GalleryImages from '../components/GalleryImages';
 import GalleryTags from '../components/GalleryTags';
@@ -15,28 +16,7 @@ const rootReducer = combineReducers({
   appState: AppStateReducer,
   images: ImagesReducer,
   tags: TagsReducer,
-  views: state => [
-    { view: 'gallery', label: 'Gallery', component: GalleryImages, menu: true },
-    { view: 'tags', label: 'Tags', component: GalleryTags, menu: true },
-    {
-      view: 'add-url',
-      label: 'Add From URL',
-      component: AddImageForm,
-      menu: true
-    },
-    {
-      view: 'settings',
-      label: 'Settings',
-      component: Settings,
-      menu: true
-    },
-    {
-      view: 'edit-image',
-      label: 'Edit Image',
-      component: EditImage,
-      menu: false
-    }
-  ]
+  settings: SettingsReducer
 });
 
 export default rootReducer;
