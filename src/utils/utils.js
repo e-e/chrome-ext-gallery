@@ -133,3 +133,24 @@ export function get_unique_tags(images) {
 export function sort_ignore_case(a, b) {
   return a.toLowerCase().localeCompare(b.toLowerCase());
 }
+
+export function getStorageInfo() {
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.getBytesInUse(null, bytesInUse => {
+      console.log('bytesInUse: ', bytesInUse);
+      let storage = {
+        bytesInUse,
+        bytesTotal: chrome.storage.local.QUOTA_BYTES
+      };
+      resolve(storage);
+    });
+  });
+}
+
+export function bytesToMb(bytes, decimals = null) {
+  let mb = bytes / 1048576;
+  if (typeof decimals === 'number') {
+    mb = mb.toFixed(decimals);
+  }
+  return mb;
+}

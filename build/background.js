@@ -75,6 +75,7 @@ function set_images(images) {
 
 function saveImage(target, tab) {
   console.log('SAVE: ', target);
+  console.log('DOCUMENT', document);
   const image = {
     id: guid(),
     src: target.srcUrl,

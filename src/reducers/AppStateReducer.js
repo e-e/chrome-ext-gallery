@@ -7,9 +7,15 @@ import {
   EDIT_INDEX
 } from '../actions';
 
+import { getStorageInfo } from '../utils/utils';
+
 const DEFUALT_STATE = {
   imagesLoadedFromStorage: false,
-  slideIndex: 0
+  slideIndex: 0,
+  storage: {
+    bytesInUse: 0,
+    bytesTotal: 0
+  }
 };
 
 function returnLog(obj, label = '', doLog = true) {
@@ -21,7 +27,12 @@ export default (state = DEFUALT_STATE, action) => {
   switch (action.type) {
     case SET_IMAGES_FROM_LOCAL_STORAGE:
       return returnLog(
-        { ...state, imagesLoadedFromStorage: true, slideIndex: GALLERY_INDEX },
+        {
+          ...state,
+          imagesLoadedFromStorage: true,
+          slideIndex: GALLERY_INDEX,
+          storage: action.storage
+        },
         'new state'
       );
 

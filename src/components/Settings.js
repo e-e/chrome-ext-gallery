@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import LinearProgress from 'material-ui/LinearProgress';
+import { bytesToMb } from '../utils/utils';
 
 class Settings extends Component {
   constructor(props) {
@@ -17,6 +19,25 @@ class Settings extends Component {
     vLink.setAttribute('download', vName);
     vLink.click();
   }
+
+  renderStorageAmount() {
+    const { bytesInUse: used, bytesTotal: available } = this.props.storage;
+    const percentage = Math.floor(used / available * 100);
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between'
+        }}
+      >
+        <LinearProgress mode="determinate" value={percentage} />
+        <div style={{ flex: 1, textAlign: 'center' }}>
+          {bytesToMb(used, 2)}mb / {bytesToMb(available, 2)}mb ({percentage}%)
+        </div>
+      </div>
+    );
+  }
   render() {
     return (
       <div>
@@ -24,6 +45,7 @@ class Settings extends Component {
         <div>
           <button onClick={this.downloadData}>Export</button>
         </div>
+        <div style={{ marginTop: '20px' }}>{this.renderStorageAmount()}</div>
       </div>
     );
   }
@@ -31,7 +53,8 @@ class Settings extends Component {
 
 const mapStateToProps = state => {
   return {
-    images: state.images.images
+    images: state.images.images,
+    storage: state.appState.storage
   };
 };
 export default connect(mapStateToProps)(Settings);

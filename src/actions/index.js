@@ -23,9 +23,12 @@ export const SETTINGS_INDEX = 2;
 export function loadImagesFromLocalStorage() {
   return dispatch => {
     utils.get_images().then(images => {
-      dispatch({
-        type: SET_IMAGES_FROM_LOCAL_STORAGE,
-        payload: images
+      utils.getStorageInfo().then(storage => {
+        dispatch({
+          type: SET_IMAGES_FROM_LOCAL_STORAGE,
+          payload: images,
+          storage
+        });
       });
     });
   };
