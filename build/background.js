@@ -72,16 +72,35 @@ function set_images(images) {
 }
 
 /* ----------------------------------- */
+function getBase64(src) {
+  return new Promise((resolve, reject) => {
+    const cvs = document.createElement('canvas');
+    const ctx = cvs.getContext('2d');
+    let image = new Image();
+    image.crossOrigin = 'anonymous';
+    image.onload = function() {
+      console.dir(image);
+      ctx.canvas.height = image.height;
+      ctx.canvas.width = image.width;
+      ctx.drawImage(image, 0, 0);
+      let base64 = cvs.toDataURL();
+      resolve(base64);
+    };
+    image.src = src;
+  });
+}
 
-function saveImage(target, tab) {
+async function saveImage(target, tab) {
   console.log('SAVE: ', target);
   console.log('DOCUMENT', document);
   const image = {
     id: guid(),
     src: target.srcUrl,
     pageUrl: target.pageUrl,
-    tags: []
+    tags: [],
+    base64: await getBase64(target.srcUrl)
   };
+  console.log('NEW IMAGE!!!', image);
   get_images()
     .then(images => {
       // don't add images with same src url
