@@ -31,7 +31,11 @@ class Settings extends Component {
           justifyContent: 'space-between'
         }}
       >
-        <LinearProgress mode="determinate" value={percentage} />
+        <LinearProgress
+          mode="determinate"
+          value={percentage}
+          style={{ marginBottom: '5px' }}
+        />
         <div style={{ flex: 1, textAlign: 'center' }}>
           {bytesToMb(used, 2)}mb / {bytesToMb(available, 2)}mb ({percentage}%)
         </div>
