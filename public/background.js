@@ -115,7 +115,7 @@ async function saveImage(target, tab) {
 }
 const manifest = chrome.runtime.getManifest();
 chrome.contextMenus.create({
-  title: `${manifest.name}!`,
+  title: `Add to collection`,
   contexts: ['image', 'video'],
   onclick: saveImage
 });
