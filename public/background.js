@@ -72,46 +72,53 @@ function set_images(images) {
 }
 
 /* ----------------------------------- */
-function getBase64(src) {
-  return new Promise((resolve, reject) => {
-    const cvs = document.createElement('canvas');
-    const ctx = cvs.getContext('2d');
-    let image = new Image();
-    image.crossOrigin = 'anonymous';
-    image.onload = function() {
-      console.dir(image);
-      ctx.canvas.height = image.height;
-      ctx.canvas.width = image.width;
-      ctx.drawImage(image, 0, 0);
-      let base64 = cvs.toDataURL();
-      resolve(base64);
-    };
-    image.src = src;
-  });
-}
+// function getBase64(src) {
+//   return new Promise((resolve, reject) => {
+//     const cvs = document.createElement('canvas');
+//     const ctx = cvs.getContext('2d');
+//     let image = new Image();
+//     image.crossOrigin = 'anonymous';
+//     image.onload = function () {
+//       console.dir(image);
+//       ctx.canvas.height = image.height;
+//       ctx.canvas.width = image.width;
+//       ctx.drawImage(image, 0, 0);
+//       let base64 = cvs.toDataURL();
+//       resolve(base64);
+//     };
+//     image.src = src;
+//   });
+// }
 
-async function saveImage(target, tab) {
-  console.log('SAVE: ', target);
-  console.log('DOCUMENT', document);
-  const image = {
-    id: guid(),
-    src: target.srcUrl,
-    pageUrl: target.pageUrl,
-    tags: [],
-    base64: await getBase64(target.srcUrl)
-  };
-  console.log('NEW IMAGE!!!', image);
-  get_images()
-    .then(images => {
-      // don't add images with same src url
-      if (!image_src_exists(image, images)) {
-        images = [...images, image];
-      }
-      return set_images(images);
-    })
-    .then(images => {
-      console.log(images);
+function saveImage(target) {
+  console.log(target);
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { src: target.srcUrl }, function (response) {
+      console.log(response);
+
+      const image = {
+        id: guid(),
+        src: target.srcUrl,
+        pageUrl: target.pageUrl,
+        tags: [],
+        base64: response.base64
+      };
+
+      get_images()
+        .then(images => {
+          // don't add images with same src url
+          if (!image_src_exists(image, images)) {
+            images = [...images, image];
+          }
+          return set_images(images);
+        })
+        .then(images => {
+          console.log(images);
+        });
+
     });
+  });
+
 }
 const manifest = chrome.runtime.getManifest();
 chrome.contextMenus.create({

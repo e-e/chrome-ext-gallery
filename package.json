@@ -27,9 +27,16 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dev": "npm-watch build"
+    "dev": "npm-watch build",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
-    "npm-watch": "^0.3.0"
+    "npm-watch": "^0.3.0",
+    "@storybook/react": "^3.3.9",
+    "@storybook/addon-actions": "^3.3.9",
+    "@storybook/addon-links": "^3.3.9",
+    "@storybook/addons": "^3.3.9",
+    "babel-core": "^6.26.0"
   }
 }
