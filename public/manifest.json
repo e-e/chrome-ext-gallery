@@ -3,14 +3,17 @@
   "name": "tameyo",
   "manifest_version": 2,
   "version": "0.1",
+  "author": "Eric Ellingson",
   "icons": {
     "48": "images/icon.png"
   },
   "permissions": [
     "storage",
     "contextMenus",
-    "tabs"
+    "tabs",
+    "unlimitedStorage"
   ],
+  "optional_permissions": [],
   "browser_action": {
     "default_popup": "index.html",
     "default_title": "tameyo"
@@ -29,5 +32,6 @@
     "scripts": [
       "background.js"
     ]
-  }
+  },
+  "api_endpoint": "https://localhost:8888/api/base64"
 }

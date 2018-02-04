@@ -1,3 +1,7 @@
+/* global chrome */
+
+const manifest = chrome.runtime.getManifest();
+
 function getBase64(src) {
   return new Promise((resolve, reject) => {
     const cvs = document.createElement('canvas');
@@ -21,11 +25,12 @@ function convert(src) {
     const ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function () {
       if (this.readyState === 4) {
+        console.log('converted: ', this);
         resolve(this);
       }
     };
     console.log('going to convert image: ', src);
-    ajax.open('POST', 'https://localhost:8888/api/base64', true);
+    ajax.open('POST', manifest.api_endpoint, true);
     ajax.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     ajax.send(JSON.stringify({ src }));
   });
@@ -48,3 +53,4 @@ chrome.runtime.onMessage.addListener(
     return true;
   }
 );
+

@@ -58,9 +58,12 @@ export function addImage(srcUrl) {
         return utils.set_images(images);
       })
       .then(images => {
-        dispatch({
-          type: SET_IMAGES_FROM_LOCAL_STORAGE,
-          payload: images
+        utils.getStorageInfo().then(storage => {
+          dispatch({
+            type: SET_IMAGES_FROM_LOCAL_STORAGE,
+            payload: images,
+            storage
+          });
         });
       });
   };
@@ -68,7 +71,7 @@ export function addImage(srcUrl) {
 
 export function clearAllImages() {
   return dispatch => {
-    chrome.storage.local.clear(function() {
+    chrome.storage.local.clear(function () {
       dispatch({
         type: CLEAR_ALL_IMAGES
       });
@@ -79,10 +82,13 @@ export function clearAllImages() {
 export function removeImage(image) {
   return dispatch => {
     utils.remove_image(image).then(images => {
-      dispatch({
-        type: SET_IMAGES_FROM_LOCAL_STORAGE,
-        payload: images,
-        removeImage: true
+      utils.getStorageInfo().then(storage => {
+        dispatch({
+          type: SET_IMAGES_FROM_LOCAL_STORAGE,
+          payload: images,
+          removeImage: true,
+          storage
+        });
       });
     });
   };

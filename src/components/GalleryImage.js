@@ -29,7 +29,7 @@ class GalleryImage extends Component {
         {this.renderLoading()}
         <MediaElement
           className="media"
-          src={this.props.image.src}
+          media={this.props.image}
           onload={this.mediaLoaded}
           controls={false}
         />

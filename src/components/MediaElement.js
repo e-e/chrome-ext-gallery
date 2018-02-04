@@ -1,20 +1,20 @@
 import React from 'react';
 import { is_video } from '../utils';
 import '../styles/MediaElement.css';
-const noop = () => {};
+const noop = () => { };
 const MediaElement = ({
-  src,
+  media,
   onload = noop,
   className = '',
   controls = true
 }) => {
   // onload = typeof onload === 'function' ? onload : () => {};
   className = `media-element ${className}`.trim();
-  if (is_video(src)) {
+  if (is_video(media.src)) {
     return (
       <video
         className={className}
-        src={src}
+        src={media.base64}
         onCanPlay={onload}
         controls={controls}
         autoPlay
@@ -22,7 +22,7 @@ const MediaElement = ({
       />
     );
   } else {
-    return <img className={className} src={src} onLoad={onload} alt="" />;
+    return <img className={className} src={media.base64} onLoad={onload} alt="" />;
   }
 };
 

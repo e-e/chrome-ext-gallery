@@ -9,7 +9,7 @@ class Settings extends Component {
     this.downloadData = this.downloadData.bind(this);
   }
   downloadData() {
-    const data = JSON.stringify(this.props.images, null, 4);
+    const data = JSON.stringify({ version: this.props.version, images: this.props.images }, null, 4);
 
     const vLink = document.createElement('a');
     const vBlob = new Blob([data], { type: 'octet/stream' });
@@ -31,21 +31,28 @@ class Settings extends Component {
           justifyContent: 'space-between'
         }}
       >
+        <div style={{ flex: 1, textAlign: 'center' }}>
+          {this.props.images.length} images saved.
+        </div>
         <LinearProgress
           mode="determinate"
           value={percentage}
-          style={{ marginBottom: '5px' }}
+          style={{ marginBottom: '5px', marginTop: '5px' }}
         />
         <div style={{ flex: 1, textAlign: 'center' }}>
           {bytesToMb(used, 2)}mb / {bytesToMb(available, 2)}mb ({percentage}%)
         </div>
+
       </div>
     );
   }
   render() {
     return (
       <div>
-        <h1>Settings</h1>
+        <h1>
+          Settings
+          <span>[v{this.props.version}]</span>
+        </h1>
         <div>
           <button onClick={this.downloadData}>Export</button>
         </div>
@@ -58,7 +65,8 @@ class Settings extends Component {
 const mapStateToProps = state => {
   return {
     images: state.images.images,
-    storage: state.appState.storage
+    storage: state.appState.storage,
+    version: state.appState.version
   };
 };
 export default connect(mapStateToProps)(Settings);

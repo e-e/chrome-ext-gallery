@@ -1,3 +1,4 @@
+/* global chrome */
 import {
   SET_IMAGES_FROM_LOCAL_STORAGE,
   SET_VIEW,
@@ -10,6 +11,7 @@ import {
 import { getStorageInfo } from '../utils/utils';
 
 const DEFUALT_STATE = {
+  version: chrome.runtime.getManifest().version,
   imagesLoadedFromStorage: false,
   slideIndex: 0,
   storage: {

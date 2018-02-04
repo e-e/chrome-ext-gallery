@@ -72,7 +72,7 @@ class EditImage extends Component {
         </ContentSection>
         <ContentSection>
           <div className="image-container">
-            <MediaElement className="media" src={this.props.image.src} />
+            <MediaElement className="media" media={this.props.image} />
           </div>
         </ContentSection>
         <ContentSection>
