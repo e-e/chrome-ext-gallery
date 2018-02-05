@@ -93,7 +93,7 @@ function set_images(images) {
 function saveImage(target) {
   console.log(target);
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { src: target.srcUrl }, function (response) {
+    chrome.tabs.sendMessage(tabs[0].id, { type: 'add-image', src: target.srcUrl }, function (response) {
       console.log(response);
 
       const image = {
@@ -118,11 +118,31 @@ function saveImage(target) {
 
     });
   });
-
 }
+
+function selectAndInsert(target) {
+  console.log('SELECT AND INSERT TARGET: ', target);
+  get_images()
+    .then(images => {
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { type: 'select-and-insert', images }, function (response) {
+          console.log('done! image selected...', response);
+        });
+      });
+    });
+}
+
+
+
 const manifest = chrome.runtime.getManifest();
 chrome.contextMenus.create({
   title: `Add to collection`,
   contexts: ['image', 'video'],
   onclick: saveImage
+});
+
+chrome.contextMenus.create({
+  title: `Select Image And Insert`,
+  contexts: ['editable'],
+  onclick: selectAndInsert
 });

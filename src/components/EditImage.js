@@ -89,6 +89,12 @@ class EditImage extends Component {
                 label="Source Page"
               />
             )}
+            {!!!this.props.image.base64 ? null : (
+              <CopyTextButton
+                text={this.props.image.base64}
+                label="Base64"
+              />
+            )}
           </div>
           <div className="click-top-copy">Click to copy</div>
         </ContentSection>

@@ -36,21 +36,53 @@ function convert(src) {
   });
 }
 
+function createElements(images) {
+  let bg = document.createElement('div');
+  let modal = document.createElement('div');
+  let items = [];
+  bg.classList.add('tameyo-bg');
+  modal.classList.add('tameyo-modal');
+
+  bg.appendChild(modal);
+  document.body.appendChild(bg);
+  return { bg, modal, items };
+}
+
+function initSelector(images) {
+  return new Promise((resolve, reject) => {
+    const { bg, modal, items } = createElements(images);
+  });
+}
+
 chrome.runtime.onMessage.addListener(
   function (request, sender, sendResponse) {
     console.log('request: ', request);
     console.log(sender.tab ?
       "from a content script:" + sender.tab.url :
       "from the extension");
-    if (request.src) {
-      convert(request.src)
-        .then(resp => {
-          console.log(resp);
-          sendResponse({ base64: JSON.parse(resp.responseText).base64 });
-          // sendResponse({ base64 });
-        });
+    switch (request.type) {
+      case 'add-image':
+        convert(request.src)
+          .then(resp => {
+            console.log(resp);
+            sendResponse({ base64: JSON.parse(resp.responseText).base64 });
+            // sendResponse({ base64 });
+          });
+        break;
+
+      case 'select-and-insert':
+        initSelector(request.images)
+          .then(selectedImage => {
+            sendResponse({ image: selectedImage });
+          });
+        break;
+
+      default:
+        console.log('message did not match an existing type');
+        break;
+
+        return true;
     }
-    return true;
   }
 );
 
